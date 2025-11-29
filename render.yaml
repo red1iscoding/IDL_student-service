@@ -2,8 +2,7 @@ services:
   - type: web
     name: student-service
     env: docker
-    docker:
-      dockerfile: Dockerfile
+    dockerfile: Dockerfile
     envVars:
       - key: SPRING_PROFILES_ACTIVE
         value: production
