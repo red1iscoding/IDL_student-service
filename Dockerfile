@@ -11,7 +11,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Stage 2: Runtime stage
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:17-jre-alpine
 
 WORKDIR /app
 
@@ -22,4 +22,4 @@ COPY --from=builder /app/target/studentservice-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
 
 # Run the application with dynamic port support
-ENTRYPOINT ["java", "-jar", "app.jar", "--server.port=${PORT:8080}"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
